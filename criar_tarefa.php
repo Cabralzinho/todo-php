@@ -10,13 +10,12 @@ if (empty($_POST["descricao"])) {
 
 $database = new Database();
 
-$query = "INSERT INTO lista_tarefa(descricao,pendencias) VALUES(:descricao, :pendencias)";
+$query = "INSERT INTO lista_tarefa(descricao) VALUES(:descricao)";
 
 $prepareList = $database->conectar()->prepare($query);
 
 $prepareList->execute([
-    ":descricao" => $_POST["descricao"],
-    ":pendencias" => true
+    ":descricao" => $_POST["descricao"]
 ]);
 
 header("Location: nova_tarefa.php?inserido=success");

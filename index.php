@@ -31,7 +31,7 @@ require "./tarefas_pendentes.php";
 				<ul class="list-group">
 					<li class="list-group-item active"><a href="#">Tarefas pendentes</a></li>
 					<li class="list-group-item"><a href="nova_tarefa.php">Nova tarefa</a></li>
-					<li class="list-group-item"><a href="todas_tarefas.php">Todas tarefas</a></li>
+					<li class="list-group-item"><a href="todas_tarefas.php">Tarefas concluídas</a></li>
 				</ul>
 			</div>
 
@@ -46,9 +46,15 @@ require "./tarefas_pendentes.php";
 								<div class="row mb-3 d-flex align-items-center tarefa">
 									<div class="col-sm-9"><?php echo $descricaoList["descricao"] ?></div>
 									<div class="col-sm-3 mt-2 d-flex justify-content-between">
-										<a href="deletar_tarefa.php?exclusao=<?= $descricaoList["id"] ?>"><i class="fas fa-trash-alt fa-lg text-danger"></i></a>
-										<i class="fas fa-edit fa-lg text-info"></i>
-										<a href="tarefa_completado.php?completado=<?= $descricaoList["id"]?> "><i class="fas fa-check-square fa-lg text-success"></i></a>
+										<a href="deletar_tarefa.php?exclusao=<?= $descricaoList["id"] ?>">
+											<i class="fas fa-trash-alt fa-lg text-danger"></i>
+										</a>
+										<a href="editar.php?editar=<?= $descricaoList["id"] ?>">
+											<i class="fas fa-edit fa-lg text-info"></i>
+										</a>
+										<a href="completar_tarefa.php?completado=<?= $descricaoList["id"] ?>">
+											<i class="fas fa-check-square fa-lg text-success"></i>
+										</a>
 									</div>
 								</div>
 							<?php } ?>
