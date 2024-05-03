@@ -1,8 +1,3 @@
-<?php
-
-require "./tarefas_pendentes.php";
-?>
-
 <html>
 
 <head>
@@ -27,37 +22,33 @@ require "./tarefas_pendentes.php";
 
 	<div class="container app">
 		<div class="row">
-			<div class="col-md-3 menu">
+			<div class="col-sm-3 menu">
 				<ul class="list-group">
-					<li class="list-group-item active"><a href="#">Tarefas pendentes</a></li>
+					<li class="list-group-item"><a href="index.php">Tarefas pendentes</a></li>
 					<li class="list-group-item"><a href="nova_tarefa.php">Nova tarefa</a></li>
-					<li class="list-group-item"><a href="todas_tarefas.php">Tarefas concluídas</a></li>
+					<li class="list-group-item active"><a href="todas_tarefas.php">Tarefas concluídas</a></li>
 				</ul>
 			</div>
 
-			<div class="col-md-9">
+			<div class="col-sm-9">
 				<div class="container pagina">
 					<div class="row">
 						<div class="col">
-							<h4>Tarefas pendentes</h4>
-							<hr />
+							<h4>Tarefas concluídas</h4>
 
-							<?php foreach ($descricao as $descricaoList) { ?>
-								<div class="row mb-3 d-flex align-items-center tarefa">
-									<div class="col-sm-9"><?php echo $descricaoList["descricao"] ?></div>
-									<div class="col-sm-3 mt-2 d-flex justify-content-between">
-										<a href="deletar_tarefa.php?exclusao=<?= $descricaoList["id"] ?>">
-											<i class="fas fa-trash-alt fa-lg text-danger"></i>
-										</a>
-										<a href="editar.php?editar=<?= $descricaoList["id"] ?>">
-											<i class="fas fa-edit fa-lg text-info"></i>
-										</a>
-										<a href="completar_tarefa.php?completado=<?= $descricaoList["id"] ?>">
-											<i class="fas fa-check-square fa-lg text-success"></i>
-										</a>
-									</div>
+							<div class="row mb-3 d-flex align-items-center tarefa">
+								<div class="col-sm-9">Tarefa</div>
+								<div class="col-sm-3 mt-2 d-flex justify-content-between">
+									<a href="#">
+										<i class="fas fa-trash-alt fa-lg text-danger"></i>
+									</a>
+									<a href="">
+										<i class="fas fa-edit fa-lg text-info"></i>
+									</a>
+									<i class="fas fa-check-square fa-lg text-success"></i>
 								</div>
-							<?php } ?>
+							</div>
+
 						</div>
 					</div>
 				</div>

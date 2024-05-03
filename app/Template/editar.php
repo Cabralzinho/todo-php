@@ -1,13 +1,3 @@
-<?php 
-require "./Database.php";
-
-$database = new Database();
-
-$query = "SELECT * FROM lista_tarefa WHERE id = {$_GET['editar']}";
-
-$listTarefa = $database->conectar()->query($query)->fetch(PDO::FETCH_ASSOC);
-?>
-
 <html>
 
 <head>
@@ -29,7 +19,7 @@ $listTarefa = $database->conectar()->query($query)->fetch(PDO::FETCH_ASSOC);
 			</a>
 		</div>
 	</nav>
-	<?php if (isset($_GET["inserido"]) == "success" && $_GET["inserido"] == "success") { ?>
+	<?php if (isset($_GET["inserido"])) { ?>
 		<div class="bg-success pt-2 text-white d-flex justify-content-center">
 			<h5>Tarefa atualizada com sucesso!</h5>
 		</div>
@@ -39,9 +29,9 @@ $listTarefa = $database->conectar()->query($query)->fetch(PDO::FETCH_ASSOC);
 		<div class="row">
 			<div class="col-md-3 menu">
 				<ul class="list-group">
-					<li class="list-group-item"><a href="index.php">Tarefas pendentes</a></li>
-					<li class="list-group-item"><a href="nova_tarefa.php">Nova tarefa</a></li>
-					<li class="list-group-item"><a href="todas_tarefas.php">Todas tarefas</a></li>
+					<li class="list-group-item"><a href="#">Tarefas pendentes</a></li>
+					<li class="list-group-item"><a href="#">Nova tarefa</a></li>
+					<li class="list-group-item"><a href="#">Todas tarefas</a></li>
 				</ul>
 			</div>
 
@@ -52,10 +42,10 @@ $listTarefa = $database->conectar()->query($query)->fetch(PDO::FETCH_ASSOC);
 							<h4>Editar tarefa</h4>
 							<hr />
 
-							<form method="post" action="editar_tarefa.php?editar=<?= $_GET["editar"] ?>">
+							<form method="post" action="">
 								<div class="form-group">
 									<label>Descrição da tarefa:</label>
-									<input name="descricao" value="<?= $listTarefa["descricao"] ?>" type="text" class="form-control" placeholder="Exemplo: Lavar o carro">
+									<input name="descricao" value="" type="text" class="form-control" placeholder="Exemplo: Lavar o carro">
 								</div>
 
 								<button type="submit" class="btn btn-success">Editar</button>

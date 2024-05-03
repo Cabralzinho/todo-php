@@ -19,7 +19,7 @@
 			</a>
 		</div>
 	</nav>
-	<?php if (isset($_GET["inserido"]) == "success" && $_GET["inserido"] == "success") { ?>
+	<?php if (isset($_GET["inserido"])) { ?>
 		<div class="bg-success pt-2 text-white d-flex justify-content-center">
 			<h5>Tarefa inserida com sucesso!</h5>
 		</div>
@@ -29,9 +29,9 @@
 		<div class="row">
 			<div class="col-md-3 menu">
 				<ul class="list-group">
-					<li class="list-group-item"><a href="index.php">Tarefas pendentes</a></li>
+					<li class="list-group-item"><a href="#">Tarefas pendentes</a></li>
 					<li class="list-group-item active"><a href="#">Nova tarefa</a></li>
-					<li class="list-group-item"><a href="todas_tarefas.php">Tarefas concluídas</a></li>
+					<li class="list-group-item"><a href="#">Tarefas concluídas</a></li>
 				</ul>
 			</div>
 
