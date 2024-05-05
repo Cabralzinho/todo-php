@@ -15,8 +15,30 @@ class HomeController
             $parametros["tarefas"] = $colecaoTarefas;
 
             $conteudo = $template->render($parametros);
-            
+
             echo $conteudo;
+        } catch (Exception $error) {
+            echo $error->getMessage();
+        }
+    }
+
+    public function excluir()
+    {
+        try {
+            TarefaModel::excluirTarefa();
+
+            return header("Location: /");
+        } catch (Exception $error) {
+            echo $error->getMessage();
+        }
+    }
+
+    public function concluir()
+    {
+        try {
+            TarefaModel::concluirTarefa();
+
+            return header("Location: /");
         } catch (Exception $error) {
             echo $error->getMessage();
         }
