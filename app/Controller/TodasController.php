@@ -9,15 +9,47 @@ class TodasController {
             $twig = new \Twig\Environment($loader);
             $template = $twig->load("todas_tarefas.html");
 
-            $parametros = [];
             $parametros["tarefas"] = $todasTarefas;
-
+            
             $conteudo = $template->render($parametros);
 
             echo $conteudo;
         }
-        catch (Exception $e) {
-            echo $e->getMessage();
+        catch (Exception $error) {
+            echo $error->getMessage();
+        }
+    }
+
+    public static function excluir() {
+        try {
+            TarefaModel::excluirTarefa();
+
+            return header("Location: ?pagina=todas");
+        }
+        catch (Exception $error) {
+            echo $error->getMessage();
+        }
+    }
+
+    public static function concluir() {
+        try {
+            TarefaModel::concluirTarefa();
+
+            return header("Location: ?pagina=todas");
+        }
+        catch (Exception $error) {
+            $error->getMessage();
+        }
+    }
+
+    public static function pendencia() {
+        try {
+            TarefaModel::pendenciasTarefas();
+
+            return header("Location: ?pagina=todas");
+        }
+        catch (Exception $error) {
+            $error->getMessage();
         }
     }
 }
