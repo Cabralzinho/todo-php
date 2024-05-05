@@ -17,20 +17,37 @@
 		<h4>Todas as Tarefas</h4>
 
 		{% for tarefa in tarefas %}
-			<div class="row mb-3 d-flex align-items-center tarefa">
-				<div class="col-sm-9">{{tarefa.descricao}}</div>
-				<div class="col-sm-3 mt-2 d-flex justify-content-between">
-					<a href="#">
-						<i class="fas fa-trash-alt fa-lg text-danger"></i>
-					</a>
-					<a href="">
-						<i class="fas fa-edit fa-lg text-info"></i>
-					</a>
-					<i class="fas fa-check-square fa-lg text-success"></i>
-				</div>
+		<div class="row mb-3 d-flex align-items-center tarefa">
+			<div class="col-sm-9">
+				{{tarefa.descricao}}
+
+				{% if tarefa.pendencias == 0 %}
+				<span class="text-success">(Concluido)</span>
+				{% else %}
+				<span class="text-warning">(Pendente)</span>
+				{% endif %}
 			</div>
+			<div class="col-sm-3 mt-2 d-flex justify-content-between align-items-center  h5">
+				<a href="?pagina=todas&metodo=excluir&id={{tarefa.id}}">
+					<i class="fas fa-trash-alt fa-lg text-danger"></i>
+				</a>
+				<a href="?pagina=editar&id={{tarefa.id}}">
+					<i class="fas fa-edit fa-lg text-info"></i>
+				</a>
+				{% if tarefa.pendencias == 0 %}
+				<a href="?pagina=todas&metodo=pendencia&id={{tarefa.id}}">
+					<i class="fa-regular fa-circle-xmark" style="color: #e20325;"></i>
+				</a>
+				{% else %}
+				<a href="?pagina=todas&metodo=concluir&id={{tarefa.id}}">
+					<i class="fas fa-check-square fa-lg text-success"></i>
+				</a>
+				{% endif %}
+			</div>
+		</div>
 		{% endfor %}
 	</section>
+	<script src="https://kit.fontawesome.com/cef3251068.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
