@@ -22,8 +22,8 @@ class AdicionarController {
 
             return header("Location: ?pagina=home");
         }
-        catch (Exception $e) {
-            echo $e->getMessage();
+        catch (Exception $error) {
+            echo $error->getMessage();
         }
     }
 }
