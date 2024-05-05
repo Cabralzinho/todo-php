@@ -48,6 +48,19 @@ class TarefaModel
         return $adicionar;
     }
 
+    public static function excluirTarefa() {
+        $connection = Connection::getConexao();
+
+        $query = "DELETE FROM lista_tarefa WHERE id = :id";
+        $query = $connection->prepare($query);
+
+        $excluir = $query->execute([
+            ":id" => $_GET["id"]
+        ]);
+
+        return $excluir;
+    }
+
     public static function editarTarefa() {
         $connection = Connection::getConexao();
 
@@ -59,10 +72,32 @@ class TarefaModel
             ":id" => $_GET["id"]
         ]);
 
-        if(empty($editar)) {
-            throw new Exception("O campo não pode está vazio");
-        }
-
         return $editar;
+    }
+
+    public static function concluirTarefa() {
+        $connection = Connection::getConexao();
+
+        $query = "UPDATE lista_tarefa SET pendencias = 0 WHERE id = :id";
+        $query = $connection->prepare($query);
+
+        $concluir = $query->execute([
+            ":id" => $_GET["id"] 
+        ]);
+
+        return $concluir;
+    }
+
+    public static function pendenciasTarefas() {
+        $connection = Connection::getConexao();
+
+        $query = "UPDATE lista_tarefa SET pendencias = 1 WHERE id = :id";
+        $query = $connection->prepare($query);
+        
+        $pendencias = $query->execute([
+            ":id" => $_GET["id"]
+        ]);
+
+        return $pendencias;
     }
 }
