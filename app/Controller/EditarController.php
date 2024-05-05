@@ -27,9 +27,9 @@ class EditarController
 
             TarefaModel::editarTarefa();
 
-            header("Location: /");
-        } catch (Exception $e) {
-            echo $e->getMessage();
+            header("Location: ?pagina=todas");
+        } catch (Exception $error) {
+            echo $error->getMessage();
         }
     }
 }
